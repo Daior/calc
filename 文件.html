@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单示例</title>
+    <style>
+        /* 基础样式 */
+        .form-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="form-group">
+            <button type="button" onclick="handleSubmit3()">
+                    商家版
+                </button>
+                <button type="button" onclick="handleSubmit4()">
+                    机构版
+                </button>
+            </div>
+    <div class="form-container" id="sjb">
+        <form id="myForm">
+            <!-- 输入框组 -->
+            <div class="form-group">
+                <label for="cppjkdj">预期后验总体ROI：</label>
+                <input type="number" 
+                    id="yqhyztROI" 
+                    name="yqhyztROI" 
+                    placeholder="请输入"
+                    required/>
+                <!-- <input onkeyup="value=value.replace(/[^\0-9\.]/g,'')" onpaste="value=value.replace(/[^\0-9\.]/g,'')" oncontextmenu = "value=value.replace(/[^\0-9\.]/g,'')"> -->
+                <!-- <input 
+                    type="number" 
+                    id="yqhyztROI" 
+                    name="yqhyztROI" 
+                    placeholder="请输入"
+                    required
+                > -->
+            </div>
+            <div class="form-group">
+                <label for="cppjkdj">产品平均客单价：</label>
+                <input 
+                    type="number" 
+                    id="cppjkdj" 
+                    name="cppjkdj" 
+                    placeholder="请输入"
+                    required
+                >
+            </div>
+            <div class="form-group">
+                <label for="pjcb">产品平均成本：</label>
+                <input 
+                    type="number" 
+                    id="pjcb" 
+                    name="pjcb" 
+                    placeholder="请输入"
+                    required
+                >
+            </div>
+            <div><label id="cplrllabel"  for="cplrllabel">产品利润率：</label></div>
+        </form>
+         <form id="myForm2">
+            <!-- 输入框组 -->
+            <div class="form-group">
+                <label for="cppjkdj">平台抽成：</label>
+                <input 
+                    type="number" 
+                    id="ptcc" 
+                    name="ptcc" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+            <div class="form-group">
+                <label for="pjcb">达人佣金：</label>
+                <input 
+                    type="number" 
+                    id="dryj" 
+                    name="dryj" 
+                    placeholder="请输入"
+                    required
+                >
+            </div>
+            <div class="form-group">
+                <label for="pjcb">售前退货率：</label>
+                <input 
+                    type="number" 
+                    id="sqthl" 
+                    name="sqthl" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+                        <div class="form-group">
+                <label for="pjcb">售后退货率：</label>
+                <input 
+                    type="number" 
+                    id="shthl" 
+                    name="shthl" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+                        <div class="form-group">
+                <label for="pjcb">发货快递费：</label>
+                <input 
+                    type="number" 
+                    id="fhkdf" 
+                    name="fhkdf" 
+                    placeholder="请输入"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="pjcb">退货快递费：</label>
+                <input 
+                    type="number" 
+                    id="thkdf" 
+                    name="thkdf" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>            <div class="form-group">
+                <label for="pjcb">商家期望总利润率：</label>
+                <input 
+                    type="number" 
+                    id="sjqwzlr" 
+                    name="sjqwzlr" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+            <!-- 按钮组 -->
+            <div class="form-group">
+                <button type="button" onclick="handleSubmit()">
+                    计算
+                </button>
+            </div>
+            <div><label id="sd1"  for="cplrllabel">代数1：</label></div>
+            <div><label id="sd2"  for="cplrllabel">代数2:</label></div>
+            <div><label id="ykROI"  for="cplrllabel">盈亏ROI：</label></div>
+            <div><label id="tkTR"  for="cplrllabel">盈亏TR：</label></div>
+        </form>
+    </div>
+   <div class="form-container" id="jgb" style="display: none;">
+        <form id="myForm">
+            <!-- 输入框组 -->
+            <div class="form-group">
+                <label for="cppjkdj">品牌方佣金：</label>
+                <input 
+                    type="number" 
+                    id="pbfyj" 
+                    name="pbfyj" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+            <div class="form-group">
+                <label for="pjcb">机构主播+运营抽成佣金：</label>
+                <input 
+                    type="number" 
+                    id="jgzbyyccyj" 
+                    name="jgzbyyccyj" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+            <div class="form-group">
+                <label for="pjcb">发货前退货率：</label>
+                <input 
+                    type="number" 
+                    id="fhqthl" 
+                    name="fhqthl" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+             <div class="form-group">
+                <label for="pjcb">发货后退货率：</label>
+                <input 
+                    type="number" 
+                    id="fhhthl" 
+                    name="fhhthl" 
+                    placeholder="请输入"
+                    required
+                >
+                %
+            </div>
+            <!-- 按钮组 -->
+            <div class="form-group">
+                <button type="button" onclick="handleSubmit2()">
+                    计算
+                </button>
+            </div>
+            <div><label id="gkztROI"  for="cplrllabel">考核整体ROI：</label></div>
+        </form>
+    </div>
+    <script>
+        function handleSubmit() {
+            // 获取输入框的值
+            const yqhyztROI= document.getElementById('yqhyztROI').value;
+            const cppjkdj = document.getElementById('cppjkdj').value;
+            const pjcb = document.getElementById('pjcb').value;
+            const ptcc = document.getElementById('ptcc').value;
+            const dryj = document.getElementById('dryj').value;
+            const sqthl = document.getElementById('sqthl').value;
+            const shthl = document.getElementById('shthl').value;
+            const fhkdf = document.getElementById('fhkdf').value;
+            const thkdf = document.getElementById('thkdf').value;
+            const sjqwzlr = document.getElementById('sjqwzlr').value;
+            if(!yqhyztROI || !cppjkdj || !pjcb || !ptcc || !dryj || !sqthl || !shthl || !fhkdf|| !thkdf || !sjqwzlr){
+                alert("输入数据不可为空")
+                return
+            }
+            const cplrl = (1 - (pjcb/cppjkdj )) *100
+            const cplrllabel = document.getElementById("cplrllabel");
+            cplrllabel.textContent = "产品利润率：" + cplrl +"%";  // 纯文本
+            const ds1label = (cplrl-ptcc-dryj-sjqwzlr)/100 * (1 - sqthl/100 - shthl/100)
+            const ds1 = document.getElementById("sd1");
+            ds1.textContent = "代数1：" + ds1label.toFixed(2);  // 纯文本
+            const ds2label = ((1-sqthl/100)*fhkdf + shthl/100*thkdf)*(1-cplrl/100)/pjcb
+            const ds2 = document.getElementById("sd2");
+            ds2.textContent = "代数2：" + ds2label.toFixed(2);  // 纯文本
+            console.log(yqhyztROI,ds1,ds2,6666)
+            const ykROIlabel = yqhyztROI/(ds1label-ds2label)
+            const ykROI = document.getElementById("ykROI");
+            ykROI.textContent = "盈亏ROI：" + ykROIlabel.toFixed(2);  // 纯文本 
+            const tkTR = document.getElementById("tkTR");
+            tkTR.textContent = "盈亏TR：" + 1/ykROIlabel * 100 +"%";  // 纯文本 tkTR
+
+        }
+        function handleSubmit2() {
+            // 获取输入框的值
+            const pbfyj= document.getElementById('pbfyj').value;
+            const jgzbyyccyj = document.getElementById('jgzbyyccyj').value;
+            const fhqthl = document.getElementById('fhqthl').value;
+            const fhhthl = document.getElementById('fhhthl').value;
+            if(!pbfyj || !jgzbyyccyj || !fhqthl || !fhhthl){
+                alert("输入数据不可为空")
+                return
+            }
+            const gkztROIlabel = 1/(pbfyj/100 -jgzbyyccyj/100)/(1-fhqthl/100-fhhthl/100)
+            const gkztROI = document.getElementById("gkztROI");
+            gkztROI.textContent = "考核整体ROI：" + gkztROIlabel.toFixed(2);  // 纯文本
+            
+        }
+        function handleSubmit3(){
+            // 通过 id 获取元素
+            const sjb = document.getElementById("sjb");
+            sjb.style.display = "block"; // 隐藏元素
+
+            const jgb = document.getElementById("jgb");
+            jgb.style.display = "none"; // 隐藏元素
+        }
+        function handleSubmit4(){
+            // 通过 id 获取元素
+            const sjb = document.getElementById("sjb");
+            sjb.style.display = "none"; // 隐藏元素
+
+            const jgb = document.getElementById("jgb");
+            jgb.style.display = "block"; // 隐藏元素
+        }
+    </script>
+</body>
+</html>
